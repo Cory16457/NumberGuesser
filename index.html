@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <title>raw.html.css.js</title>
+  </head>
+  <body>
+<button id="popup-button">
+  <img src="settings.gif">
+</button>
+
+<div class="popup-background" id="popup-background">
+  <div class="popup-content">
+    <h2>Settings</h2>
+    <input type="number" id="min-value" class="cmin-value" name="min-value" placeholder="Minimum Number">
+    <br>
+    <input type="number" id="max-value" class="cmax-value" name="max-value" placeholder="Maximum Number">
+    <br>
+    <button onclick="alert('Saved!')"lue>Save</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button id="close-button">Close</button>
+    <br>
+  </div>
+</div>
+    <script>
+      function game() {
+          minValue = parseFloat(document.getElementById('min-value').value);
+        console.log(minValue)
+    maxValue = parseFloat(document.getElementById('max-value').value);
+        console.log(maxValue)
+        if (maxValue <= minValue) {
+          alert('are u serious rn bro')
+          return
+        }
+        var guess = parseFloat( document.getElementById('guess').value)
+        var random = Math.floor(Math.random()*(parseFloat(maxValue) - minValue + 1) + minValue);
+        console.log (random)
+        if (random == guess) {
+          alert('stop pressing enter misterrrr u got it correct.')
+        }
+        else {
+          alert('RNG doesnt believe in you at the moment.')
+        }
+      }
+      const popupButton = document.getElementById("popup-button");
+  const popupBackground = document.getElementById("popup-background");
+  const closeButton = document.getElementById("close-button");
+
+  popupButton.addEventListener("click", function() {
+    popupBackground.style.display = "flex";
+  });
+
+  closeButton.addEventListener("click", function() {
+    popupBackground.style.display = "none";
+  });
+
+    function playVideo() {
+      var video = document.getElementById("myVideo");
+      video.muted = false;
+      video.style.display = "block";
+      video.parentElement.style.zIndex = 1;
+      video.requestFullscreen();
+      video.play();
+    }
+    </script>
+    <div class="wrap-q">
+    <input id="guess" placeholder="Enter Number 1-10" type="number">
+      <br>
+    <button onclick="game()" class="submit">Submit</button>
+    </div>
+    <div class="vid-contain">
+    <video id="myVideo" loop autoplay muted>
+      <source src="no.mp4">
+    </video>
+    </div>
+    <button class="play-button" onclick="playVideo()">cheat</button>
+  </body>
+</html>
